@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { LOGO_LINK } from "../config/constants";
 
-const Header = () => (
-    <div className="header">
+
+const Header = () => {
+    const [sbtnName, setSbtnName]=useState("logout");
+    const updateBtnName = () => {
+         (sbtnName==="login")? setSbtnName("logout"):setSbtnName("login");
+    };
+    
+    return (<div className="header">
         <div className="logo-container">
             <img className="logo" src={LOGO_LINK}></img>
         </div>
@@ -13,8 +20,12 @@ const Header = () => (
             <li>Contact Us</li>
             <li>Cart</li>
         </ul>
+        <button onClick={()=> updateBtnName()}>{sbtnName}</button>
         </div>
     </div>
+    );
 
-);
+    };
+
+
 export default Header;

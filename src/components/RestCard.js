@@ -1,7 +1,8 @@
 import { IMAGE_LINK } from "../config/constants";
 
-const RestCard = ({rest, data})=> {
-    const {name, cuisines, avgRating, cloudinaryImageId} = rest;
+const RestCard = (props)=> {
+    const {rest, data} = props || {};
+    const {name, cuisines, avgRating, cloudinaryImageId} = rest || {};
     return (
         <div className="rest-card">
         <img alt="rest-image" className="rest-logo" src={IMAGE_LINK + cloudinaryImageId}/>

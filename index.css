@@ -16,7 +16,7 @@
     padding: 10px;
 
 }
-.rest-card{
+.rest-card,.shimmer-card{
   
     width:200px;
     
@@ -45,3 +45,4 @@
     height:40px;
     margin:20px;
 }
+
