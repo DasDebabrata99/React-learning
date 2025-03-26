@@ -1,27 +1,27 @@
 import RestCard from "./Restcard";
-import restaurants from "../config/mockData";
+
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
     let searchText = "";
-    const [listOfRestaurants, setListOfRestaurants] = useState(restaurants);
-    const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState(restaurants);
-    console.log(restaurants);
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState([]);
+    
 
     useEffect(() => {
         fetchData();
     }, []);
 
     fetchData = async () => {
-        const data = await fetch("https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5769238&lng=88.42797569999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-            // headers: {
-            //     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-            //     "Accept": "application/json",
-            //     "Content-Type": "application/json"
-            //   }
-        );
-        console.log(data);
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.5769238&lng=88.42797569999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+                                );
+
+        const restJson = await data.json();
+        setListOfRestaurants(restJson.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+        setFilteredListOfRestaurants(restJson.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+        console.log(restJson);                        
+      
 
     }
 
