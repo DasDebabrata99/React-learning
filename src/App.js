@@ -2,34 +2,48 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import About from "./components/about";
+import Error from "./components/Error"
+import RestaurantMenu from "./components/RestaurantMenu";
 
-    
-function MyComponent() {
-    const [count, setCount] = useState(0);  // First state
-    const [isOn, setIsOn] = useState(false); // Second state
-  
-    return (
-      <div>
-        <p>{count}</p>
-        <button onClick={() => setCount(count + 1)}>Increment</button>
-        <p>{isOn ? 'ON' : 'OFF'}</p>
-        <button onClick={() => setIsOn(!isOn)}>Toggle</button>
-      </div>
-    );
-  }
+
 
 
 const App = () => {
     return (
         <div className="app">
             <Header />
-            <Body />
+            <Outlet />
         </div>
     )
 };
 
+const appRouter = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+        errorElement: <Error />,
+        children:[
+            {
+                path: "/",
+                element: <Body />,
+            },
+            {
+                path: "/about",
+                element: <About />,
+            },
+            {
+                path: "/rest-menu/:restId",
+                element: <RestaurantMenu />,
+            },
+        ]
+    },
+
+    
+])
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);
 
 
 

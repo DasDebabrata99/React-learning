@@ -1,0 +1,24 @@
+import { MENU_ITEM_IMAGE_LINK } from "../config/constants";
+
+const MenuItem = (props) => {
+    const item = props.menuitem.card.info;
+    console.log(item);
+    
+    const {name, imageId, description, defaultPrice} = item;
+    const rating=item.ratings.aggregatedRating.rating;
+    const ratingCount = item.ratings.aggregatedRating.ratingCount;
+    return (
+        <div className="menu-item-container">
+            <div>{name}</div>
+
+            <div>
+                <img src={MENU_ITEM_IMAGE_LINK + imageId}></img>
+            </div>
+            <div>{description}</div>
+            <div>{defaultPrice}</div>
+            <div>{rating} ({ratingCount})</div>
+        </div>
+    );
+}
+
+export default MenuItem;

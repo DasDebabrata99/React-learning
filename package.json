@@ -2,9 +2,8 @@
   "name": "react-ch-03",
   "version": "1.0.0",
   "description": "React learning",
-
   "scripts": {
-    "start":"npx parcel index.html",
+    "start": "npx parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
@@ -12,7 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "~6.11.2"
   },
   "devDependencies": {
     "parcel": "^2.13.3",
