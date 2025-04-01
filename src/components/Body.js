@@ -3,8 +3,13 @@ import RestCard from "./Restcard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useConnectivityStatus from "../config/useConnectivityStatus";
 
 const Body = () => {
+
+    const onlineStatus = useConnectivityStatus();
+   
+
     let searchText = "";
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState([]);
@@ -28,6 +33,10 @@ const Body = () => {
         console.log(resData);                        
       
 
+    }
+
+    if(!onlineStatus){
+        return <h1>Connection Lost!! Check your Internet Connection!</h1>;
     }
 
     if (listOfRestaurants.length == 0) {

@@ -52,3 +52,17 @@
     font-size: 12px;
 
 }
+.menu-item-container{
+    display: flex;
+    margin: 15px;
+    padding: 15px;
+    max-width: 800px;
+    border:2px solid;
+    font-size: 12px;
+}
+
+.item-image{
+    padding: 15px;
+    height:200px;
+    border-style: outset;
+}
