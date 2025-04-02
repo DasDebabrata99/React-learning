@@ -1,4 +1,4 @@
-import RestCard from "./Restcard";
+import RestCard, { PromotedRestCardFunction } from "./Restcard";
 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -7,9 +7,11 @@ import useConnectivityStatus from "../config/useConnectivityStatus";
 
 const Body = () => {
 
+    
+
     const onlineStatus = useConnectivityStatus();
    
-
+    const PromotedRestCard = PromotedRestCardFunction(RestCard);
     let searchText = "";
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredListOfRestaurants, setFilteredListOfRestaurants] = useState([]);
@@ -77,8 +79,13 @@ const Body = () => {
 
             <div className="rest-container">
                 {
-                    filteredListOfRestaurants.map(restData =>
-                       <Link key={restData.info.id}  to={"/rest-menu/" + restData.info.id}> <RestCard rest={restData.info} data={restData.analytics} /></Link>
+                    filteredListOfRestaurants.map((restData,index) =>
+
+                       <Link key={restData.info.id}  to={"/rest-menu/" + restData.info.id}> 
+                            { (index%2==0)? <RestCard rest={restData.info} />
+                                : <PromotedRestCard rest={restData.info} />}
+                            <RestCard rest={restData.info} />
+                       </Link>
                     )
                 }
             </div>

@@ -1,3 +1,4 @@
+/* @import "tailwindcss"; */
 .header{
     display:flex;
     justify-content: space-between;
@@ -65,4 +66,19 @@
     padding: 15px;
     height:200px;
     border-style: outset;
+}
+
+.promoted-text{
+    border-radius: 4px;
+    margin: 5px 10px;
+    position: absolute;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
+    font-weight: normal;
+}
+
+.category-title{
+    justify-content: center;
 }
